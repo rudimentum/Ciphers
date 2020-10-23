@@ -14,6 +14,9 @@ public class Cipher {
         int key = Integer.parseInt(reader.readLine());
         System.out.println("Action: 1 - encode, 2 - decode");
         int action = Integer.parseInt(reader.readLine());
+
+        Caesar caesar = new Caesar(action, message, key);
+        caesar.chooseAction();
     }
 
     public static void encryptVigenere() throws IOException {
