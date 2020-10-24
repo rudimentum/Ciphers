@@ -27,5 +27,8 @@ public class Cipher {
         String key = reader.readLine();
         System.out.println("Action: 1 - encode, 2 - decode");
         int action = Integer.parseInt(reader.readLine());
+
+        Vigenere vigenere = new Vigenere(action, message, key);
+        vigenere.chooseAction();
     }
 }
