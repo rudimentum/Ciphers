@@ -40,8 +40,10 @@ public class Cipher {
         String key = reader.readLine();
         System.out.println("Select an action:\n1 - Encoding\n2 - Decoding");
         int action = Integer.parseInt(reader.readLine());
+        System.out.println("Select a result format:\n1 - Binary\n2 - Hexdecimal");
+        int format = Integer.parseInt(reader.readLine());
 
-        XOR xor = new XOR(action, message, key);
+        XOR xor = new XOR(action, format, message, key);
         xor.chooseAction();
     }
 }
