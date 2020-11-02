@@ -12,26 +12,26 @@ public class Caesar {
     }
 
     public void chooseAction() {
-        char[] symbols = new char[message.length()];
+        String result = "";
         int correctKey = key % 26;
         if (action == 1) {
-            encode(symbols, message, correctKey);
+            encode(result, message, correctKey);
         } else if (action == 2) {
-            encode(symbols, message, 26 - correctKey);
+            encode(result, message, 26 - correctKey);
         }
     }
 
-    private void encode(char[] symbols, String message, int key) {
+    private void encode(String result, String message, int key) {
         for (int i = 0; i < message.length(); i++) {
             char current = message.charAt(i);
             if (Character.isLetter(current) && Character.isUpperCase(current)) {
-                symbols[i] = (char) ((current + key - 'A') % 26 + 'A');
+                result += Character.toString((char) ((current + key - 'A') % 26 + 'A'));
             } else if (Character.isLetter(current) && Character.isLowerCase(current)) {
-                symbols[i] = (char) ((current + key - 'a') % 26 + 'a');
+                result += Character.toString((char) ((current + key - 'a') % 26 + 'a'));
             } else {
-                symbols[i] = current;
+                result += current;
             }
         }
-        System.out.println(symbols);
+        System.out.println(result);
     }
 }

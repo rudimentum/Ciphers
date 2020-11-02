@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Type: 1 - caesar, 2 - vigenere, 3 - xor");
+        System.out.println("Please, choose the cipher:\n1 - Caesar\n2 - Vigenere\n3 - XOR");
         int type = Integer.parseInt(reader.readLine());
 
         switch (type) {

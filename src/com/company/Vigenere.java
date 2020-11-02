@@ -12,11 +12,11 @@ public class Vigenere {
     }
 
     public void chooseAction() {
-        char[] symbols = new char[message.length()];
+        String result = "";
         if (action == 1)
-            encode(symbols, message, generateKey(key));
+            encode(result, message, generateKey(key));
         else if (action == 2)
-            decode(symbols, message, generateKey(key));
+            decode(result, message, generateKey(key));
     }
 
     private String generateKey(String key) {
@@ -32,32 +32,32 @@ public class Vigenere {
         return keyBuilder.toString();
     }
 
-    private void encode(char[] symbols, String message, String key) {
+    private void encode(String result, String message, String key) {
         for (int i = 0; i < message.length(); i++) {
             char current = message.charAt(i);
             if (Character.isLetter(current) && Character.isUpperCase(current)) {
-                symbols[i] = (char) (((current + key.charAt(i)) - 2 * 'A') % 26 + 'A');
+                result += Character.toString((char) (((current + key.charAt(i)) - 2 * 'A') % 26 + 'A'));
             } else if (Character.isLetter(current) && Character.isLowerCase(current)) {
-                symbols[i] = (char) (((current + key.toLowerCase().charAt(i)) - 2 * 'a') % 26 + 'a');
+                result += Character.toString((char) (((current + key.toLowerCase().charAt(i)) - 2 * 'a') % 26 + 'a'));
             }
             else {
-                symbols[i] = current;
+                result += current;
             }
         }
-        System.out.println(symbols);
+        System.out.println(result);
     }
 
-    private void decode(char[] symbols, String message, String key) {
+    private void decode(String result, String message, String key) {
         for (int i = 0; i < message.length(); i++) {
             char current = message.charAt(i);
             if (Character.isLetter(current) && Character.isUpperCase(current)) {
-                symbols[i] = (char) (((current - key.charAt(i)) + 26) % 26 + 'A');
+                result += Character.toString((char) (((current - key.charAt(i)) + 26) % 26 + 'A'));
             } else if (Character.isLetter(current) && Character.isLowerCase(current)) {
-                symbols[i] = (char) (((current - key.toLowerCase().charAt(i)) + 26) % 26 + 'a');
+                result += Character.toString((char) (((current - key.toLowerCase().charAt(i)) + 26) % 26 + 'a'));
             } else {
-                symbols[i] = current;
+                result += current;
             }
         }
-        System.out.println(symbols);
+        System.out.println(result);
     }
 }
