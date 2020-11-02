@@ -31,4 +31,17 @@ public class Cipher {
         Vigenere vigenere = new Vigenere(action, message, key);
         vigenere.chooseAction();
     }
+
+    public static void encryptXOR() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Message: ");
+        String message = reader.readLine();
+        System.out.println("Key: ");
+        String key = reader.readLine();
+        System.out.println("Action: 1 - encode, 2 - decode");
+        int action = Integer.parseInt(reader.readLine());
+
+        XOR xor = new XOR(action, message, key);
+        xor.chooseAction();
+    }
 }
