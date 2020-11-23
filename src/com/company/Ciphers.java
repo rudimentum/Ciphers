@@ -1,10 +1,15 @@
 package com.company;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
-public class Cipher {
+public class Ciphers {
 
     public static void encryptCaesar() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -40,8 +45,26 @@ public class Cipher {
         String key = reader.readLine();
         System.out.println("Select an action:\n1 - Encoding\n2 - Decoding");
         int action = Integer.parseInt(reader.readLine());
-        
+
         XOR xor = new XOR(action, message, key);
         xor.chooseAction();
+    }
+
+    public static void encryptDES() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter message: ");
+        String message = reader.readLine();
+
+        DES des = new DES(message);
+        des.doAction();
+    }
+
+    public static void encryptRSA() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter message: ");
+        String message = reader.readLine();
+
+        RSA rsa = new RSA(message);
+        rsa.doAction();
     }
 }
